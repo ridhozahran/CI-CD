@@ -1,6 +1,6 @@
-var startTime;
-var elapsedTime = 0;
-var timerInterval;
+let StartTimer;
+let elapsedTime = 0;
+let timerInterval;
 
 const display = document.getElementById("display");
 
@@ -13,9 +13,9 @@ function timeToString(time) {
 }
 
 function startTimer() {
-  startTime = Date.now() - elapsedTime;
+  StartTimer = Date.now() - elapsedTime;
   timerInterval = setInterval(() => {
-    elapsedTime = Date.now() - startTime;
+    elapsedTime = Date.now() - StartTimer;
     display.textContent = timeToString(elapsedTime);
   }, 10);
 }
@@ -31,6 +31,6 @@ function resetTimer() {
 }
 
 // Event listeners
-document.getElementById("startBtn").addEventListener("click", startTime);
+document.getElementById("startBtn").addEventListener("click", StartTimer);
 document.getElementById("stopBtn").addEventListener("click", stopTimer);
 document.getElementById("resetBtn").addEventListener("click", resetTimer);
