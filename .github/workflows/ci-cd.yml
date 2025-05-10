@@ -1,7 +1,23 @@
-stages:
-  - build
+name: Build HTML
 
-build-job:
-  stage: build
-  script
-    - echo "Build berjalan"
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Memeriksa file index.html
+        run: |
+          echo "Memeriksa file index.html..."
+          ls -l index.html
+          echo "Build selesai!"
